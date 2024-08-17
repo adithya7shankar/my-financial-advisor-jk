@@ -1,0 +1,74 @@
+##Part 0: Setup
+# 0.1 Stock Name
+symbol = input("Please enter the Stock name/symbol: ")
+
+
+##P1 
+# 1.1 Stock Market API Integration
+api_key = '8HSNI4OSWW0QGJDZ'
+interval = '5min'
+stock_data = fetch_stock_data(symbol, interval, api_key)
+
+
+# 1.2 Scraping Financial News
+sources = {
+    'cnbc': 'https://www.cnbc.com/finance/',
+    'bloomberg': 'https://www.bloomberg.com/markets',
+    'wsj': 'https://www.wsj.com/news/markets',
+    'financial_times': 'https://www.ft.com/markets',
+    'economist': 'https://www.economist.com/finance-and-economics'
+}
+
+for source, url in sources.items():
+    print(f"Scraping articles from {source.capitalize()}:")
+    news_data = scrape_news(url, source)
+    for i, article in enumerate(news_data, start=1):
+        print(f"{i}. {article}")
+    print("\n" + "="*50 + "\n")
+
+
+# 1.3 Company Financial Reports and Newsletters
+get_and_scrape_company_reports()
+
+
+## P2 
+# 2.1 Technical Indicators
+
+# Now pass the DataFrame to calculate_technical_indicators
+stock_data_with_indicators = calculate_technical_indicators(stock_data)
+
+
+
+## P3
+#3.1 Sentiment Analysis
+# Example usage
+news_sentiments = analyze_sentiment(news_data)
+
+
+
+
+
+## P4
+# 4.1 Predictive model
+# Example usage
+model = create_predictive_model(stock_data_with_indicators)
+
+
+
+
+
+## P5
+# 5.1 Decision Algorithm 
+# Example usage
+decision = make_decision(model, stock_data_with_indicators[['SMA', 'RSI', 'MACD']].values)
+
+
+
+
+
+## P6
+# 6.1 Contextual Recommendations 
+# Example usage
+contextual_recommendation = generate_recommendation(decision, news_sentiments, news_data)
+print(contextual_recommendation)
+
